@@ -1,10 +1,10 @@
-# Boas vindas ao repositório do projeto Trybe Wallet!
+# Welcome to Trybe Wallet!
 
 ---
 
 
 # Skills
-In this project, you need to able to:
+In this project, you need to be able to:
 
   * Create a Redux Store in React app;
 
