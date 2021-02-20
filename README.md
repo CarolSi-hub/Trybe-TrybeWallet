@@ -15,7 +15,7 @@ In this project, you need to be able to:
   * Create Redux dispatchers no Redux in react app;  
   
   * Connect Redux with React components;
-  *
+  
   * Create async actions in React apps where you have a Redux.
 
 ---
