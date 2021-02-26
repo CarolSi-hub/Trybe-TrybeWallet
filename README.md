@@ -1,6 +1,6 @@
 # Welcome to Trybe Wallet!
 
-## https://trybe-wallet.vercel.app/
+##https://exchange-wallet-h7b12r2b7-carolsi-hub.vercel.app/
 
 ---
 
