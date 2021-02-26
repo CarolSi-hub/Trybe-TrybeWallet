@@ -14,7 +14,13 @@ const INITIAL_STATE = {
   currentId: 0,
   totalExpense: 0,
   isToEdit: false,
-  expenseToEdit: {},
+  expenseToEdit: {
+      value: 0,
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      exchangeRates: {},},
 };
 
 function getTotalValue(expenses) {

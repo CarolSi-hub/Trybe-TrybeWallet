@@ -10,8 +10,9 @@ class WalletForm extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getWhatToRender = this.getWhatToRender.bind(this);
 
-    this.state = {
+    this.state = {     
       value: 0,
       description: '',
       currency: 'USD',
@@ -22,8 +23,16 @@ class WalletForm extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchCurrenciesProps } = this.props;
-    fetchCurrenciesProps();
+    const { fetchCurrenciesProps, isToEditProps } = this.props;   
+    fetchCurrenciesProps();  
+    if(isToEditProps) {
+    this.getWhatToRender();
+    }   
+  }
+
+  getWhatToRender() {
+    const { expenseToEditProps } = this.props;
+      this.setState({ expense : expenseToEditProps });
   }
 
   handleInputChange({ target: { name, value } }) {
@@ -46,9 +55,12 @@ class WalletForm extends React.Component {
   }
 
   render() {
-    const { currenciesProps } = this.props;
+
+    const { currenciesProps, isToEditProps, expenseToEditProps } = this.props;
     const { value, description, method, tag, currency } = this.state;
-    return (
+
+
+      return (
       <form className="wallet-form">
         <label htmlFor="value">
           Valor:
@@ -127,10 +139,10 @@ class WalletForm extends React.Component {
         </label>
         <button
           type="button"
-          onClick={ this.handleSubmit }
+          onClick={ isToEditProps ? console.log('editar') : this.handleSubmit }
           className="wallet-form-button"
         >
-          Adicionar Despesa
+          {isToEditProps ? 'Editar' : 'Adicionar despesa'}
         </button>
       </form>
     );
@@ -138,7 +150,10 @@ class WalletForm extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  currenciesProps: state.wallet.currencies });
+  currenciesProps: state.wallet.currencies,
+  isToEditProps: state.wallet.isToEdit,
+  expenseToEditProps: state.wallet.expenseToEdit,
+ });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCurrenciesProps: () => dispatch(fetchCurrencies()),
