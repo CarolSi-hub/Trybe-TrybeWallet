@@ -13,14 +13,7 @@ const INITIAL_STATE = {
   latestExchange: {},
   currentId: 0,
   totalExpense: 0,
-  isToEdit: false,
-  expenseToEdit: {
-      value: 0,
-      description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
-      exchangeRates: {},},
+  isToEdit: false,  
 };
 
 function getTotalValue(expenses) {
@@ -58,7 +51,8 @@ export default function (state = INITIAL_STATE, action) {
       isToEdit: true,
     };
   case EDIT_EXPENSE: {
-    const index = action.id;
+    const index = action.expense.id;
+    console.log(index)
     const expensesState = [...state.expenses];
     expensesState[index] = { ...action.expense };
     return {

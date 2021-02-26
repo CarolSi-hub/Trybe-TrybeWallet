@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchCurrencies, fetchCurrenciesData, addExpense } from '../../actions';
+import { fetchCurrencies, fetchCurrenciesData, addExpense, editExpense } from '../../actions';
 import './WalletForm.css';
 
 class WalletForm extends React.Component {
@@ -23,16 +23,13 @@ class WalletForm extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchCurrenciesProps, isToEditProps } = this.props;   
+    const { fetchCurrenciesProps } = this.props;   
     fetchCurrenciesProps();  
-    if(isToEditProps) {
-    this.getWhatToRender();
-    }   
-  }
+  }   
 
   getWhatToRender() {
     const { expenseToEditProps } = this.props;
-      this.setState({ expense : expenseToEditProps });
+      this.setState(expenseToEditProps);
   }
 
   handleInputChange({ target: { name, value } }) {
@@ -43,7 +40,7 @@ class WalletForm extends React.Component {
     event.preventDefault();
     const { addExpenseProps, fetchCurrenciesDataProps } = this.props;
     await fetchCurrenciesDataProps();
-    addExpenseProps(this.state);
+    addExpenseProps({...this.state});
     this.setState({
       value: 0,
       description: '',
@@ -54,11 +51,13 @@ class WalletForm extends React.Component {
     });
   }
 
+  
   render() {
 
-    const { currenciesProps, isToEditProps, expenseToEditProps } = this.props;
+    const { currenciesProps, isToEditProps, editExpenseProps } = this.props;
     const { value, description, method, tag, currency } = this.state;
 
+   if(isToEditProps && this.state.id === undefined) this.getWhatToRender();
 
       return (
       <form className="wallet-form">
@@ -139,10 +138,10 @@ class WalletForm extends React.Component {
         </label>
         <button
           type="button"
-          onClick={ isToEditProps ? console.log('editar') : this.handleSubmit }
+          onClick={ isToEditProps ? () => editExpenseProps({...this.state}) : this.handleSubmit }
           className="wallet-form-button"
         >
-          {isToEditProps ? 'Editar' : 'Adicionar despesa'}
+          { isToEditProps ? 'Editar' : 'Adicionar despesa' }
         </button>
       </form>
     );
@@ -159,6 +158,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCurrenciesProps: () => dispatch(fetchCurrencies()),
   fetchCurrenciesDataProps: () => dispatch(fetchCurrenciesData()),
   addExpenseProps: (expense) => dispatch(addExpense(expense)),
+  editExpenseProps: (expense) => dispatch(editExpense(expense)),
 });
 
 WalletForm.propTypes = {

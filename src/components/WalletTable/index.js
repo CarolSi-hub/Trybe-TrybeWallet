@@ -32,7 +32,8 @@ class WalletTable extends React.Component {
     ];
     return (
       <table border="1" className="wallet-table">
-        <tr>
+        <thead>
+          <tr>
           {tableHead.map((tableKey) => (
             <th
               className="wallet-table-head"
@@ -40,7 +41,8 @@ class WalletTable extends React.Component {
             >
               { tableKey }
             </th>))}
-        </tr>
+            </tr>
+        </thead>
         {tableData.map((expense) => (
           <tr key={ expense.id }>
             <td className="wallet-table-data">{expense.description}</td>
@@ -97,9 +99,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 WalletTable.propTypes = {
-  tableData: PropTypes.objectOf(PropTypes.number).isRequired,
+  tableData: PropTypes.arrayOf(PropTypes.number).isRequired,
   deleteExpenseProps: PropTypes.func.isRequired,
-
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletTable);

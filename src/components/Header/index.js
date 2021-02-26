@@ -12,7 +12,7 @@ class Header extends React.Component {
         <h1 className="wallet-logo">TrybeWallet</h1>
         <div className="wallet-header-information">
           <h3 data-testid="email-field">{ email }</h3>
-          <h3 data-testid="total-field">{` Total:  ${totalExpense.toString()}`}</h3>
+          <h3 data-testid="total-field">{` Total:  ${totalExpense.toFixed(2).toString()}`}</h3>
           <h3 data-testid="header-currency-field">BRL</h3>
         </div>
       </header>
