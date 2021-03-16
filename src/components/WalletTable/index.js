@@ -32,7 +32,7 @@ class WalletTable extends React.Component {
     ];
     return (
       <table border="1" className="wallet-table">
-        <thead>
+        <thead className="wallet-thead">
           <tr>
           {tableHead.map((tableKey) => (
             <th

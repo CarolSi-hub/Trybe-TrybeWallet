@@ -1,12 +1,14 @@
 .wallet-header {
   align-items: center;
   background-color: rgb(21, 54, 12);
+  box-sizing: border-box;
   box-shadow: 1px 1px 5px black;
   display: flex;
   flex-direction: row;
-  height: 10vh;
-  justify-content: space-around;
-  width: 100vw;
+  height: 10rem;
+  justify-content: space-between;
+  padding: 0 30px;
+  width: 100%;
 }
 
 .wallet-header-information {
@@ -16,11 +18,44 @@
   flex-direction: row;
   font-size: 0.8em;
   justify-content: space-between;
-  width: 20vw;
+  width: 25rem;
 }
+
+.wallet-header-information h3{
+  box-sizing: content-box;
+  margin-right: 5px;
+  width: 25rem;
+}
+
 
 .wallet-logo {
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3rem;
   font-weight: 600;
+}
+
+@media(max-width: 1080px){
+  
+.wallet-header { 
+  align-items: center;
+  flex-direction: column;  
+  height: 8rem;
+  }
+
+  .wallet-logo {
+  font-size: 2rem;
+  margin-bottom: 0;
+  }
+
+  .wallet-header-information { 
+  align-items: center;
+  flex-direction: column;  
+  width: 100%;
+  }
+
+  .wallet-header-information h3{
+  margin: 0;
+  width: 100%;
+  }
 }
