@@ -2,6 +2,7 @@
 
 ## https://wallet-rho.vercel.app/
 
+Better view in desktop
 ---
 
 
