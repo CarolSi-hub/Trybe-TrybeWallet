@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 5px;
-  width: 100vw;
+  width: 100%;
 }
 
 .wallet-input-box {
@@ -26,4 +26,19 @@
   height: 26px;
   margin: 10px;
   width: 200px;
+}
+
+@media(max-width: 1080px){
+  .wallet-form {
+  flex-wrap: wrap;
+  }
+
+  .wallet-input-box {  
+  margin: 5px;
+  }
+
+  #value{
+    width: 40px;
+  }
+
 }
