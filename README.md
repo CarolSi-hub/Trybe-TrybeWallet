@@ -2,9 +2,10 @@
 
 ## https://wallet-rho.vercel.app/
 
-Better view in desktop
+Better view in desktop <br><br>
 ---
 
+<img src="./wallet-images/desktop-login.png" width=600px /><br><br><img src="./wallet-images/desktop-wallet.png" width=600px />
 
 # Skills
 In this project, you need to be able to:
